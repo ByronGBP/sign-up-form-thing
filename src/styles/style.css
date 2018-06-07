@@ -1,0 +1,101 @@
+/* ---- reset ---- */
+
+html {
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+
+/* ---- typography ---- */
+
+body {
+  color: #111;
+  font-family: Helvetica, Arial, sans-serif;
+  line-height: 147%;
+}
+
+/* ---- layout ---- */
+
+html,
+body {
+  height: 100%;
+  overflow: hidden;
+}
+
+input {
+  outline: none;
+}
+
+.flex {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.space {
+  margin-bottom: 15px;
+  padding-top: 15px;
+}
+
+.container {
+  width: 50%;
+}
+
+.input-field {
+  border: 0; 
+  padding: 4px 0; 
+  border-bottom: 1px solid #ccc; 
+  background-color: transparent
+}
+
+.title-text {
+  font-size: 2em;
+}
+
+.placeholder {
+  position: absolute;
+  width: 100%;
+  color: #aaa;
+  z-index: -1;
+  top: 15px;
+  letter-spacing: 0.5px;
+  font-size: 0.5em;
+  transition: 0.4s;
+}
+
+.input-field:focus ~ .placeholder{
+  top: 40px;
+  color: rgb(251, 0, 7);
+  transition: 0.4s;
+}
+
+.border-focus {
+  position: absolute; 
+  bottom: 0%;
+  left: 0%;
+  width: 0%;
+  height: 2px;
+  background-color: rgb(251, 0, 7);
+  transition: 0.4s;
+}
+
+.input-field:focus ~ .border-focus {
+  width: 100%; 
+  transition: 0.4s;
+}
+
+/* ----- dev -----*/
+ 
+.border-dev {
+  border: 1px solid black;
+}
+

@@ -17,8 +17,14 @@ body {
 
 body {
   color: #111;
-  font-family: Helvetica, Arial, sans-serif;
+  font-family: 'Open Sans Condensed', sans-serif;
   line-height: 147%;
+  letter-spacing: 2px;
+}
+
+button {
+  font-family: 'Open Sans Condensed', sans-serif;
+  letter-spacing: 1px;
 }
 
 /* ---- layout ---- */
@@ -29,7 +35,7 @@ body {
   overflow: hidden;
 }
 
-input {
+:focus {
   outline: none;
 }
 
@@ -59,22 +65,50 @@ input {
 
 .title-text {
   font-size: 2em;
+  text-align: center;
 }
 
 .placeholder {
   position: absolute;
   width: 100%;
-  color: #aaa;
+  color: rgb(167, 166, 166);
   z-index: -1;
   top: 15px;
   letter-spacing: 0.5px;
-  font-size: 0.5em;
+  font-size: 0.8em;
   transition: 0.4s;
 }
 
 .input-field.has-content ~ .placeholder{
   top: 40px;
   color: rgb(251, 0, 7);
+  transition: 0.4s;
+}
+
+.personal-data {
+  max-height: 0px;
+  opacity: 0;
+  z-index: -10;
+}
+
+.personal-data.display {
+  overflow:hidden;
+  transition: max-height 1s linear;
+  max-height: 50vh; 
+  height: auto;
+  z-index: auto;
+  opacity: 1;
+  border-top: 2px solid rgb(167, 166, 166);;
+}
+
+.personal-data > * {
+  height: inherit;
+  padding: inherit;
+  margin: inherit;
+}
+
+.personal-data.display {
+  height: auto;
   transition: 0.4s;
 }
 

@@ -9,8 +9,23 @@ export class Nvxman {
     return this._getAll('input');
   }
 
-  addHMTL (html) {
-    this.element.innerHTML = html;
+  getSections (query) {
+    if (query) {
+      return this._get(query);
+    }
+    return this._getAll('section');
+  }
+
+  getButton () {
+    return this._get('button');
+  }
+
+  addHMTL (html, append) {
+    if (append) {
+      this.element.innerHTML += html;
+    } else {
+      this.element.innerHTML = html;
+    }
   }
 
   addFocusEvent (callback) {
@@ -23,6 +38,37 @@ export class Nvxman {
     if (callback) {
       this._addEvent('blur', callback);
     }
+  }
+
+  addClickEvent (callback) {
+    if (callback) {
+      this._addEvent('click', callback);
+    }
+  }
+
+  removeClickEvent (callback) {
+    if (callback) {
+      this._removeEvent('click', callback);
+    }
+  }
+
+  removeFocusEvent (callback) {
+    if (callback) {
+      this._removeEvent('focus', callback);
+    }
+  }
+
+  removeBlurEvent (callback) {
+    if (callback) {
+      this._removeEvent('blur', callback);
+    }
+  }
+
+  remove (parent) {
+    if (parent) {
+      this.element.parentNode.remove();
+    }
+    this.element.remove();
   }
 
   append (childs) {
@@ -71,6 +117,11 @@ export class Nvxman {
       nvxElements.push(new Nvxman(elements[i]));
     }
     return nvxElements;
+  }
+
+  _get (query) {
+    const element = this.element.querySelector(query);
+    return new Nvxman(element);
   }
 
   _addEvent (event, callback) {

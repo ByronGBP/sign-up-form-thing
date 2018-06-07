@@ -1,4 +1,5 @@
 import { Nvxman } from '../utils/nvxman';
+import { Template } from '../templates/template';
 
 export class FormView {
   constructor (dom) {
@@ -8,10 +9,23 @@ export class FormView {
 
   _init () {
     this._addHTML();
+    this._getElements();
+    this._createCallbacks();
     this._addInputsEvents();
+    this._addButtonEvent();
   }
 
-  _addInputsEvents () {
+  _addHTML () {
+    this._dom.addHMTL(Template.form);
+  }
+
+  _getElements () {
+    this.inputs = this._dom.getInputs();
+    this.button = this._dom.getButton();
+    this.section = this._dom.getSections('.personal-data');
+  }
+
+  _createCallbacks () {
     this.callbackFocusInput = (evt) => {
       evt.target.classList.add('has-content');
     };
@@ -23,39 +37,42 @@ export class FormView {
       }
     };
 
-    const inputs = this._dom.getInputs();
+    this.callbackClickButton = (evt) => {
+      this._removeButtonEvent();
+      this.button.remove(true);
+      this.section.addClass('display');
+      this._addButtonSignUpEvent();
+    };
+  }
 
-    for (let i = 0; i < inputs.length; i++) {
-      inputs[i].addFocusEvent(this.callbackFocusInput);
-      inputs[i].addBlurEvent(this.callbackBlurInput);
+  _addInputsEvents () {
+    for (let i = 0; i < this.inputs.length; i++) {
+      this.inputs[i].addFocusEvent(this.callbackFocusInput);
+      this.inputs[i].addBlurEvent(this.callbackBlurInput);
     }
   }
 
-  _addHTML () {
-    const html = this._getTemplateEmailPassword();
-    this._dom.addHMTL(html);
+  _addButtonEvent () {
+    this.button.addClickEvent(this.callbackClickButton);
   }
 
-  _getTemplateEmailPassword () {
-    return `
-    <div id="title" class="space">
-      <span class="title-text">Sign up</span>
-    </div>
-    <div id="inputs-field" class="flex space">
-      <div class="space flex">
-        <input type="email" class="input-field">
-        <label class="placeholder">Email</label>
-        <span class="border-focus"></span>
-      </div>
-      <div class="space flex">
-        <input type="text" class="input-field">
-        <label class="placeholder">Password</label>
-        <span class="border-focus"></span>
-      </div>
-      <div class="space flex">
-        <button class="next">Next</button>
-      </div>
-    </div>
-    `;
+  _addButtonSignUpEvent () {
+    this.button = this._dom.getButton();
+    this.callbackClickButton = () => {
+      console.log('works!');
+    };
+
+    this._addButtonEvent();
+  }
+
+  _removeButtonEvent () {
+    this.button.removeClickEvent(this.callbackClickButton);
+  }
+
+  _removeInputsEvents () {
+    for (let i = 0; i < this.inputs.length; i++) {
+      this.inputs[i].removeFocusEvent(this.callbackFocusInput);
+      this.inputs[i].removeBlurEvent(this.callbackBlurInput);
+    }
   }
 }

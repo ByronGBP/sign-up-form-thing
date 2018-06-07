@@ -24,6 +24,7 @@
     - Los botones no son nada llamativos y da la impresión, incluso, que son parte de un anuncio de terceros. 
     - Las secciones no están nada diferenciadas.
     - Tarda una eternidad para hacer una búsqueda y no deja hacer nada mientras tanto. 
+    - No agradable user experience.
     - 0 confianza para poner mi tarjeta.
 
 

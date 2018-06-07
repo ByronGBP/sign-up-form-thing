@@ -7,6 +7,31 @@ export class FormView {
   }
 
   _init () {
+    this._addHTML();
+    this._addInputsEvents();
+  }
+
+  _addInputsEvents () {
+    this.callbackFocusInput = (evt) => {
+      evt.target.classList.add('has-content');
+    };
+
+    this.callbackBlurInput = (evt) => {
+      const target = evt.target;
+      if (target.value === '') {
+        evt.target.classList.remove('has-content');
+      }
+    };
+
+    const inputs = this._dom.getInputs();
+
+    for (let i = 0; i < inputs.length; i++) {
+      inputs[i].addFocusEvent(this.callbackFocusInput);
+      inputs[i].addBlurEvent(this.callbackBlurInput);
+    }
+  }
+
+  _addHTML () {
     const html = this._getTemplateEmailPassword();
     this._dom.addHMTL(html);
   }
@@ -27,7 +52,9 @@ export class FormView {
         <label class="placeholder">Password</label>
         <span class="border-focus"></span>
       </div>
-      <button class="next">Next</button>
+      <div class="space flex">
+        <button class="next">Next</button>
+      </div>
     </div>
     `;
   }

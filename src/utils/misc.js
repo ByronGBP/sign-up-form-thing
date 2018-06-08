@@ -1,3 +1,3 @@
-export function parseToArray(item) {
+export function parseToArray (item) {
   return item.length && typeof item === 'object' ? item : [item];
 };

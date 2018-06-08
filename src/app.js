@@ -5,7 +5,7 @@ import { FormView } from './views/form';
 
 const init = () => {
   const mainContainer = document.querySelector('#main-container');
-  const formView = new FormView(mainContainer);
+  const formView = new FormView(mainContainer); // eslint-disable-line no-unused-vars
 };
 
 document.addEventListener('DOMContentLoaded', init);

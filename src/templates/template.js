@@ -3,7 +3,7 @@ let path = process.env.ASSETS_PATH ? process.env.ASSETS_PATH : '';
 export const Template = {
   form: `
 <div class="image">
-  <img src=".${path}/assets/cymit.png" alt="cymit-logo">
+  <img class="logo" src=".${path}/assets/cymit.png" alt="cymit-logo">
 </div>
 
 <section class="space">

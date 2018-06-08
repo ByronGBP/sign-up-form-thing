@@ -1,3 +1,12 @@
+/* ---- colors ---- */
+/*
+#F2E1E1
+#F24B4B
+#F20707
+#820303
+#230000
+*/
+
 /* ---- reset ---- */
 
 html {
@@ -10,14 +19,14 @@ html {
 body {
   margin: 0;
   padding: 0;
-  background: linear-gradient(-45deg, #e75158, #ec2525)
-}
+  background: #F2E1E1
 
+}
 
 /* ---- typography ---- */
 
 body {
-  color: #111;
+  color: #820303;
   font-family: 'Open Sans Condensed', sans-serif;
   line-height: 147%;
   letter-spacing: 2px;
@@ -28,12 +37,21 @@ button {
   letter-spacing: 1px;
 }
 
+input, span {
+  z-index: 10;
+}
+
+label {
+  z-index: 5;
+}
+
 /* ---- layout ---- */
 
 html,
 body {
   height: 100%;
   overflow: hidden;
+  user-select: none;
 }
 
 :focus {
@@ -41,10 +59,11 @@ body {
 }
 
 #main-container {
-  border: 1px solid black;
+  border: 1px solid transparent;
   border-radius: 10px;
-  background: rgba(0,0,0,0.5);
+  background:linear-gradient(-45deg, #F23232, #F24B4B);
   max-width: 300px;
+  box-shadow: 0 0 10px #820303;
 }
 
 .flex {
@@ -64,10 +83,14 @@ body {
   width: 80%;
 }
 
+.logo {
+  max-width: 100px;
+}
+
 .input-field {
   border: 0; 
   padding: 4px 0; 
-  border-bottom: 1px solid #ccc; 
+  border-bottom: 1px solid #F2E1E1; 
   background-color: transparent
 }
 
@@ -79,8 +102,7 @@ body {
 .placeholder {
   position: absolute;
   width: 100%;
-  color: rgb(167, 166, 166);
-  z-index: -1;
+  color: #F2E1E1;
   top: 15px;
   letter-spacing: 0.5px;
   font-size: 0.8em;
@@ -89,7 +111,7 @@ body {
 
 .input-field.has-content ~ .placeholder{
   top: 40px;
-  color: rgb(251, 0, 7);
+  color: #820303;
   transition: 0.4s;
 }
 
@@ -101,12 +123,11 @@ body {
 
 .personal-data.display {
   overflow:hidden;
-  transition: max-height 1s linear;
+  transition: 0.4s;
   max-height: 50vh; 
   height: auto;
   z-index: auto;
   opacity: 1;
-  border-top: 2px solid rgb(167, 166, 166);;
 }
 
 .personal-data > * {
@@ -115,18 +136,13 @@ body {
   margin: inherit;
 }
 
-.personal-data.display {
-  height: auto;
-  transition: 0.4s;
-}
-
 .border-focus {
   position: absolute; 
   bottom: 0%;
   left: 0%;
   width: 0%;
   height: 2px;
-  background-color: rgb(251, 0, 7);
+  background-color: #820303;
   transition: 0.4s;
 }
 

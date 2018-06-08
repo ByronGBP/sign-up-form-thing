@@ -1,7 +1,7 @@
 export const Template = {
   form: `
 <div class="image">
-  <img src="./dist/assets/cymit.png" alt="cymit-logo">
+  <img src=".${process.env.ASSETS_PATH}/assets/cymit.png" alt="cymit-logo">
 </div>
 
 <section class="space">

@@ -31,6 +31,7 @@
     "webpack-cli": "^2.0.14"
   },
   "dependencies": {
+    "dotenv-webpack": "^1.5.7",
     "express": "^4.16.3"
   }
 }

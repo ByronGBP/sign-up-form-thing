@@ -1,6 +1,7 @@
 const path = require('path');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
+const Dotenv = require('dotenv-webpack');
 
 module.exports = {
   mode: 'development',
@@ -10,6 +11,7 @@ module.exports = {
     path: path.resolve(__dirname, 'dist')
   },
   plugins: [
+    new Dotenv(),
     new CleanWebpackPlugin(['dist']),
     new CopyWebpackPlugin([
       { from: 'src/styles', to: 'styles' },

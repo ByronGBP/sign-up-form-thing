@@ -1,7 +1,9 @@
+let path = process.env.ASSETS_PATH ? process.env.ASSETS_PATH : '';
+
 export const Template = {
   form: `
 <div class="image">
-  <img src=".${process.env.ASSETS_PATH}/assets/cymit.png" alt="cymit-logo">
+  <img src=".${path}/assets/cymit.png" alt="cymit-logo">
 </div>
 
 <section class="space">

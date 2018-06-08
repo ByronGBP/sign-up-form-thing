@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "webpack --watch --config webpack.config.js",
     "test": "jasmine",
-    "heroku-postbuild": "webpack -p --config ./webpack.prod.config.js --progress"
+    "heroku-postbuild": "webpack -p --config ./webpack.config.js --progress"
   },
   "author": "ByronGBP",
   "license": "ISC",

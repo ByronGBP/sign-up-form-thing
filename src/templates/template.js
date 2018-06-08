@@ -1,5 +1,9 @@
 export const Template = {
   form: `
+<div class="image">
+  <img src="./dist/assets/cymit.png" alt="cymit-logo">
+</div>
+
 <section class="space">
   <span class="title-text">SIGN UP</span>
 </section>

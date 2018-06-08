@@ -12,7 +12,8 @@ module.exports = {
   plugins: [
     new CleanWebpackPlugin(['dist']),
     new CopyWebpackPlugin([
-      { from: 'src/styles', to: 'styles' }
+      { from: 'src/styles', to: 'styles' },
+      { from: 'src/assets', to: 'assets' }
     ])
   ],
   module: {

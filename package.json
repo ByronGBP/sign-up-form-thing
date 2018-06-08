@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node server-heroku.js",
-    "dev": "webpack --watch --config webpack.config.js && webpack-dev-server",
+    "dev": "webpack --config webpack.config.js && open index.dev.html && webpack --watch --config webpack.config.js",
     "test": "jasmine",
     "heroku-postbuild": "webpack -p --config ./webpack.config.js --progress"
   },

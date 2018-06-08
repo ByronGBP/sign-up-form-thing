@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "start": "webpack --config webpack.config.js",
     "dev": "webpack --watch --config webpack.config.js",
     "test": "jasmine",
     "heroku-postbuild": "webpack -p --config ./webpack.config.js --progress"

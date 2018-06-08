@@ -20,7 +20,6 @@ body {
   margin: 0;
   padding: 0;
   background: #F2E1E1
-
 }
 
 /* ---- typography ---- */
@@ -54,6 +53,25 @@ body {
   user-select: none;
 }
 
+button {
+  background: transparent;
+  border: 1px solid #F2E1E1;
+  color: #F2E1E1;
+  border-radius: 3px;
+  transition: 0.3s;
+}
+
+button:hover {
+  border: 1px solid #820303;
+  color: #820303;
+  transition: 0.3s;
+  background: linear-gradient(-45deg, rgb(241, 104, 104), rgb(238, 26, 26));;
+}
+
+button:active {
+  letter-spacing: 2px;
+}
+
 :focus {
   outline: none;
 }
@@ -61,7 +79,7 @@ body {
 #main-container {
   border: 1px solid transparent;
   border-radius: 10px;
-  background:linear-gradient(-45deg, #F23232, #F24B4B);
+  background: linear-gradient(-45deg, #F23232, #F24B4B);
   max-width: 300px;
   box-shadow: 0 0 10px #820303;
 }

@@ -161,7 +161,7 @@ export class FormView {
     }
 
     let title = this._dom.getElement('.title-text');
-    title.setText('Congrats!\n You are sign in!');
+    title.setText('Congrats!\n You are signed in!');
     this.button = this._dom.createButton();
     this.callbackClickButton = () => {
       this._init();

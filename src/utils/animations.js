@@ -9,7 +9,6 @@ export function animateInput (input) {
   let rounds = 0;
 
   intervalId = setInterval(() => {
-    console.log(originalMargin);
     if ((margin > 5 && offset > 0) || (margin < -5 && offset < 0)) {
       offset = -offset;
       rounds++;
@@ -19,7 +18,6 @@ export function animateInput (input) {
 
     if (rounds > MAX_ROUND) {
       input.style.marginLeft = originalMargin;
-      console.log(input.style.marginLeft);
       clearInterval(intervalId);
       intervalId = null;
     }

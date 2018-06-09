@@ -62,8 +62,6 @@ export class FormView {
     this.callbackClickButton = (evt) => {
       if (this._isFormValid(true)) {
         this._showPersonalData();
-      } else {
-        console.log('no valid');
       }
     };
 
@@ -101,8 +99,6 @@ export class FormView {
     this.callbackClickButton = () => {
       if (this._isFormValid()) {
         console.log('valid');
-      } else {
-        console.log('no valid');
       }
     };
 

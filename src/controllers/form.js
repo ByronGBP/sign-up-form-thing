@@ -15,7 +15,6 @@ export class FormController {
 
   check (type, text) {
     let isValid = null;
-    console.log(type);
     switch (type) {
     case TYPE.email:
       isValid = this._checkEmail(text);

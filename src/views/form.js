@@ -1,9 +1,12 @@
 import { Nvxman } from '../utils/nvxman';
 import { Template } from '../templates/template';
+import { parseToObject } from '../utils/misc';
+import { animateInput } from '../utils/animations';
 
 export class FormView {
-  constructor (dom) {
+  constructor (dom, controller) {
     this._dom = new Nvxman(dom);
+    this._controller = controller;
     this._init();
   }
 
@@ -20,9 +23,28 @@ export class FormView {
   }
 
   _getElements () {
-    this.inputs = this._dom.getInputs();
-    this.button = this._dom.getButton();
-    this.section = this._dom.getSections('.personal-data');
+    this.button = this._getButton();
+    this.inputs = this._getInputs();
+    this.section = this._getSection();
+  }
+
+  _getButton () {
+    return this._dom.getButton();
+  }
+
+  _getSection () {
+    return this._dom.getSections('.personal-data');
+  }
+
+  _getInputs () {
+    let inputs = this._dom.getInputs();
+    let keys = [];
+
+    for (let i = 0; i < inputs.length; i++) {
+      keys.push(inputs[i].getTypeAttribute());
+    }
+
+    return parseToObject(inputs, keys);
   }
 
   _createCallbacks () {
@@ -33,22 +55,40 @@ export class FormView {
     this.callbackBlurInput = (evt) => {
       const target = evt.target;
       if (target.value === '') {
-        evt.target.classList.remove('has-content');
+        target.classList.remove('has-content');
       }
     };
 
     this.callbackClickButton = (evt) => {
-      this._removeButtonEvent();
-      this.button.remove(true);
-      this.section.addClass('display');
-      this._addButtonSignUpEvent();
+      if (this._isFormValid(true)) {
+        this._showPersonalData();
+      } else {
+        console.log('no valid');
+      }
+    };
+
+    this.callbackKeyupInput = (evt) => {
+      const type = evt.target.attributes.type.value;
+      const text = evt.target.value;
+      this._controller.check(type, text);
+    };
+
+    this._controller.onCheck = (isValid, type) => {
+      if (isValid) {
+        this.inputs[type].addClass('valid');
+        this.inputs[type].removeClass('no-valid');
+      } else {
+        this.inputs[type].removeClass('valid');
+        this.inputs[type].addClass('no-valid');
+      }
     };
   }
 
   _addInputsEvents () {
-    for (let i = 0; i < this.inputs.length; i++) {
-      this.inputs[i].addFocusEvent(this.callbackFocusInput);
-      this.inputs[i].addBlurEvent(this.callbackBlurInput);
+    for (let key in this.inputs) {
+      this.inputs[key].addFocusEvent(this.callbackFocusInput);
+      this.inputs[key].addBlurEvent(this.callbackBlurInput);
+      this.inputs[key].addKeyupEvent(this.callbackKeyupInput);
     }
   }
 
@@ -57,12 +97,61 @@ export class FormView {
   }
 
   _addButtonSignUpEvent () {
-    this.button = this._dom.getButton();
+    this.button = this._getButton();
     this.callbackClickButton = () => {
-      console.log('works!');
+      if (this._isFormValid()) {
+        console.log('valid');
+      } else {
+        console.log('no valid');
+      }
     };
 
     this._addButtonEvent();
+  }
+
+  _isFormValid (firstStep) {
+    let noValids = [];
+
+    /* Refactor this! */
+    if (firstStep) {
+      let valid = true;
+      if (this.inputs['email'].getValue() === '') {
+        this.inputs['email'].addClass('no-valid');
+        animateInput(this.inputs['email'].element);
+        valid = false;
+      }
+      if (this.inputs['password'].getValue() === '') {
+        animateInput(this.inputs['password'].element);
+        this.inputs['password'].addClass('no-valid');
+        valid = false;
+      }
+      if (!valid) {
+        return valid;
+      }
+    }
+
+    for (let key in this.inputs) {
+      if (this.inputs[key].getValue() === '' && !firstStep) {
+        this.inputs[key].addClass('no-valid');
+      }
+      if (this.inputs[key].hasClass('no-valid')) {
+        noValids.push(this.inputs[key].element);
+      }
+    }
+    if (noValids.length !== 0) {
+      for (let i = 0; i < noValids.length; i++) {
+        animateInput(noValids[i]);
+      }
+      return false;
+    }
+    return true;
+  }
+
+  _showPersonalData () {
+    this._removeButtonEvent();
+    this.button.remove(true);
+    this.section.addClass('display');
+    this._addButtonSignUpEvent();
   }
 
   _removeButtonEvent () {
@@ -70,9 +159,10 @@ export class FormView {
   }
 
   _removeInputsEvents () {
-    for (let i = 0; i < this.inputs.length; i++) {
-      this.inputs[i].removeFocusEvent(this.callbackFocusInput);
-      this.inputs[i].removeBlurEvent(this.callbackBlurInput);
+    for (let key in this.inputs) {
+      this.inputs[key].removeFocusEvent(this.callbackFocusInput);
+      this.inputs[key].removeBlurEvent(this.callbackBlurInput);
+      this.inputs[key].removeKeyupevent(this.callbackKeyupInput);
     }
   }
 }

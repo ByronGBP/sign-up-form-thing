@@ -1,8 +1,17 @@
 import { parseToArray } from './misc';
 
+/* Little class for DOM manipulation purposes */
 export class Nvxman {
   constructor (elem, className, id) {
     this.element = elem;
+  }
+
+  getTypeAttribute () {
+    return this._getAttribute('type');
+  }
+
+  getValue () {
+    return this.element.value;
   }
 
   getInputs () {
@@ -40,6 +49,12 @@ export class Nvxman {
     }
   }
 
+  addKeyupEvent (callback) {
+    if (callback) {
+      this._addEvent('keyup', callback);
+    }
+  }
+
   addClickEvent (callback) {
     if (callback) {
       this._addEvent('click', callback);
@@ -61,6 +76,12 @@ export class Nvxman {
   removeBlurEvent (callback) {
     if (callback) {
       this._removeEvent('blur', callback);
+    }
+  }
+
+  removeKeyupEvent (callback) {
+    if (callback) {
+      this._removeEvent('keyup', callback);
     }
   }
 
@@ -103,6 +124,13 @@ export class Nvxman {
     }
   }
 
+  hasClass (className) {
+    if (className) {
+      return this.element.classList.contains(className);
+    }
+    return false;
+  }
+
   setText (text) {
     if (!text) {
       text = '';
@@ -130,5 +158,9 @@ export class Nvxman {
 
   _removeEvent (event, callback) {
     this.element.removeEventListener(event, callback);
+  }
+
+  _getAttribute (type) {
+    return this.element.attributes[type].value;
   }
 }

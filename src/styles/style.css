@@ -140,6 +140,19 @@ button:active {
   z-index: -10;
 }
 
+.valid ~ .placeholder:after {
+  content: ' \2713';
+}
+
+.no-valid ~.placeholder:after {
+  color: #F2E1E1;
+  content: ' X'
+}
+
+.no-valid ~ .placeholder:hover:after {
+  color:red;
+}
+
 .personal-data.display {
   overflow:hidden;
   transition: 0.4s;
@@ -175,4 +188,3 @@ button:active {
 .border-dev {
   border: 1px solid black;
 }
-

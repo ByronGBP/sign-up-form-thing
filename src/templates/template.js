@@ -17,7 +17,7 @@ export const Template = {
     <span class="border-focus"></span>
   </div>
   <div class="space flex">
-    <input type="text" class="input-field">
+    <input type="password" class="input-field">
     <label class="placeholder">Password</label>
     <span class="border-focus"></span>
   </div>
@@ -28,17 +28,17 @@ export const Template = {
 
 <section class="personal-data flex space contain">
   <div class="space flex">
-    <input type="text" class="input-field">
+    <input type="name" class="input-field">
     <label class="placeholder">Full Name</label>
     <span class="border-focus"></span>
   </div>
   <div class="space flex">
-    <input type="text" class="input-field">
-    <label class="placeholder">Direction</label>
+    <input type="address" class="input-field">
+    <label class="placeholder">Address</label>
     <span class="border-focus"></span>
   </div>
   <div class="space flex">
-    <input type="number" class="input-field">
+    <input type="postal-code" class="input-field">
     <label class="placeholder">Postal Code</label>
     <span class="border-focus"></span>
   </div>

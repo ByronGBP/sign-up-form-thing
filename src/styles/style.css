@@ -36,6 +36,11 @@ button {
   letter-spacing: 1px;
 }
 
+div {
+  opacity: 1;
+  transition: 0.5s;
+}
+
 input, span {
   z-index: 10;
 }
@@ -113,9 +118,12 @@ button:active {
   background-color: transparent
 }
 
+.title {
+  text-align: center;
+}
+
 .title-text {
   font-size: 2em;
-  text-align: center;
 }
 
 .placeholder {
@@ -154,7 +162,7 @@ button:active {
 }
 
 .personal-data.display {
-  overflow:hidden;
+  overflow: hidden;
   transition: 0.4s;
   max-height: 50vh; 
   height: auto;
@@ -180,6 +188,11 @@ button:active {
 
 .input-field.has-content ~ .border-focus {
   width: 100%; 
+  transition: 0.4s;
+}
+
+.hidden {
+  opacity: 0;
   transition: 0.4s;
 }
 

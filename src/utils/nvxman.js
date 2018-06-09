@@ -6,6 +6,10 @@ export class Nvxman {
     this.element = elem;
   }
 
+  getElement (query) {
+    return this._get(query);
+  }
+
   getTypeAttribute () {
     return this._getAttribute('type');
   }
@@ -35,6 +39,17 @@ export class Nvxman {
     } else {
       this.element.innerHTML = html;
     }
+  }
+
+  createButton () {
+    let div = document.createElement('div');
+    div.classList.add('space');
+    div.classList.add('hidden');
+    let button = document.createElement('button');
+    div.appendChild(button);
+    button.innerText = 'Again pls!';
+    this.element.insertBefore(div, this.element.childNodes[4]);
+    return new Nvxman(button);
   }
 
   addFocusEvent (callback) {

@@ -6,9 +6,9 @@ export const Template = {
   <img class="logo" src=".${path}/assets/cymit.png" alt="cymit-logo">
 </div>
 
-<section class="space">
+<div class="title space">
   <span class="title-text">SIGN UP</span>
-</section>
+</div>
 
 <section class="flex space contain">
   <div class="space flex">

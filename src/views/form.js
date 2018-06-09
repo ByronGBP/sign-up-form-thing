@@ -98,7 +98,7 @@ export class FormView {
     this.button = this._getButton();
     this.callbackClickButton = () => {
       if (this._isFormValid()) {
-        console.log('valid');
+        this._showSignInSuccess();
       }
     };
 
@@ -150,6 +150,30 @@ export class FormView {
     this._addButtonSignUpEvent();
   }
 
+  _showSignInSuccess () {
+    this._removeButtonEvent();
+    this._removeInputsEvents();
+    let sections = this._dom.getSections();
+
+    for (let i = 0; i < sections.length; i++) {
+      sections[i].addClass('hidden');
+      sections[i].removeClass('display');
+    }
+
+    let title = this._dom.getElement('.title-text');
+    title.setText('Congrats!\n You are sign in!');
+    this.button = this._dom.createButton();
+    this.callbackClickButton = () => {
+      this._init();
+    };
+    this._addButtonEvent();
+
+    setTimeout(() => {
+      let div = document.querySelector('div.hidden');
+      div.classList.remove('hidden');
+    }, 500);
+  }
+
   _removeButtonEvent () {
     this.button.removeClickEvent(this.callbackClickButton);
   }
@@ -158,7 +182,7 @@ export class FormView {
     for (let key in this.inputs) {
       this.inputs[key].removeFocusEvent(this.callbackFocusInput);
       this.inputs[key].removeBlurEvent(this.callbackBlurInput);
-      this.inputs[key].removeKeyupevent(this.callbackKeyupInput);
+      this.inputs[key].removeKeyupEvent(this.callbackKeyupInput);
     }
   }
 }

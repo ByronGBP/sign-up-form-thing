@@ -1,3 +1,4 @@
+/* eslint-disable */
 beforeEach(() => {
   const toBeByron = () => {
     return {

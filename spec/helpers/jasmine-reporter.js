@@ -1,3 +1,4 @@
+/* eslint-disable */
 let SpecReporter = require('jasmine-spec-reporter').SpecReporter;
 
 jasmine.getEnv().clearReporters();

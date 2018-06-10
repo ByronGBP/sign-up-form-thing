@@ -32,11 +32,12 @@ export class FormController {
       isValid = this._checkPostalCode(text);
       break;
     default:
-      console.error('Type not supported');
-      break;
+      throw new Error(`type not supported: ${type}`);
     }
 
-    this.onCheck(isValid, type);
+    if (this.onCheck) {
+      this.onCheck(isValid, type);
+    }
   }
 
   _checkEmail (text) {

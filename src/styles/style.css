@@ -157,10 +157,6 @@ button:active {
   content: ' X'
 }
 
-.no-valid ~ .placeholder:hover:after {
-  color:red;
-}
-
 .personal-data.display {
   overflow: hidden;
   transition: 0.4s;

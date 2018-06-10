@@ -19,20 +19,36 @@ export function parseToObject (arr, keys) {
 }
 
 export function hasUpperCase (str) {
-  let regex = /[A-Z]/;
-  return regex.test(str);
+  if (typeof str === 'string') {
+    let regex = /[A-Z]/;
+    return regex.test(str);
+  } else {
+    throw new Error(`type not supported -> str: ${typeof str}`);
+  }
 }
 
 export function hasSymbol (str) {
-  let regex = /\W/;
-  return regex.test(str);
+  if (typeof str === 'string') {
+    let regex = /\W/;
+    return regex.test(str);
+  } else {
+    throw new Error(`type not supported -> str: ${typeof str}`);
+  }
 }
 
 export function hasNumber (str) {
-  let regex = /[0-9]/;
-  return regex.test(str);
+  if (typeof str === 'string') {
+    let regex = /[0-9]/;
+    return regex.test(str);
+  } else {
+    throw new Error(`type not supported -> str: ${typeof str}`);
+  }
 }
 
 export function hasLength (str, length) {
-  return str.length >= length;
+  if (typeof str === 'string' && typeof length === 'number') {
+    return str.length >= length;
+  } else {
+    throw new Error(`type not supported -> str, length: ${typeof str}, ${typeof length}`);
+  }
 }

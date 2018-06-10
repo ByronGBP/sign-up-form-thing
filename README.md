@@ -6,6 +6,6 @@
 ## For make it work
   - `npm run dev`
 
-## For run de the test
+## For run the tests
   - Only string comparations and controller calls are tested.
   - `npm test`

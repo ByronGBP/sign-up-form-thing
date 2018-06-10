@@ -14,8 +14,8 @@ module.exports = {
     new Dotenv(),
     new CleanWebpackPlugin(['dist']),
     new CopyWebpackPlugin([
-      { from: 'src/styles', to: 'styles' },
-      { from: 'src/assets', to: 'assets' }
+      { from: 'src/public/styles', to: 'styles' },
+      { from: 'src/public/assets', to: 'assets' }
     ])
   ],
   module: {

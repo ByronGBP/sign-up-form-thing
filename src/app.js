@@ -1,6 +1,6 @@
 'use strict';
 
-import { style } from './styles/style.css'; // eslint-disable-line no-unused-vars
+import { style } from './public/styles/style.css'; // eslint-disable-line no-unused-vars
 import { FormView } from './views/form';
 import { FormController } from './controllers/form';
 

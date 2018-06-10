@@ -1,4 +1,4 @@
-import { hasUpperCase, hasNumber, hasSymbol, hasLength } from '../utils/misc';
+import { hasUpperCase, hasNumber, hasSymbol, hasLength } from '../public/utils/misc';
 
 const TYPE = {
   email: 'email',

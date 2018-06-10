@@ -1,7 +1,7 @@
-import { Nvxman } from '../utils/nvxman';
+import { parseToObject } from '../public/utils/misc';
+import { animateInput } from '../public/utils/animations';
+import { Nvxman } from '../public/utils/nvxman';
 import { Template } from '../templates/template';
-import { parseToObject } from '../utils/misc';
-import { animateInput } from '../utils/animations';
 
 export class FormView {
   constructor (dom, controller) {
@@ -110,19 +110,11 @@ export class FormView {
 
     /* Refactor this! */
     if (firstStep) {
-      let valid = true;
       if (this.inputs['email'].getValue() === '') {
         this.inputs['email'].addClass('no-valid');
-        animateInput(this.inputs['email'].element);
-        valid = false;
       }
       if (this.inputs['password'].getValue() === '') {
-        animateInput(this.inputs['password'].element);
         this.inputs['password'].addClass('no-valid');
-        valid = false;
-      }
-      if (!valid) {
-        return valid;
       }
     }
 
@@ -161,7 +153,7 @@ export class FormView {
     }
 
     let title = this._dom.getElement('.title-text');
-    title.setText('Congrats!\n You are signed in!');
+    title.setText('Congrats!\n You are signed up!');
     this.button = this._dom.createButton();
     this.callbackClickButton = () => {
       this._init();
